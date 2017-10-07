@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app="appTiempo">
+<head>
+<meta charset="UTF-8">
+<title>Servicios AngularJS</title>
+<link rel="stylesheet" href="resources/styles/bootstrap.min.css" />
+<link rel="stylesheet" href="resources/styles/bootstrap-theme.min.css" />
+</head>
+<body ng-controller="appController">
+
+
+
+<h1>Datos de temperatura</h1>
+
+<div class="input-group">
+      <span class="input-group-addon">Ubicacion</span>
+  <input ng-model="localolization">
+  <button ng-click="sendURL()">Buscar</button>
+</div>
+
+
+<div class="col-xs-3">
+<table class="table table-hover">
+  <tr>
+    <th>Ciudad: </th>
+    <th>{{geo.location.name}}</th>
+  </tr>
+  <tr>
+      <td>Region: </td>
+      <td>{{geo.location.region}}</td>
+  </tr>
+  <tr>
+      <td>Pais: </td>
+      <td>{{geo.location.country}}</td>
+  </tr>
+  <tr>
+     <td>Region: </td>
+     <td>{{geo.location.region}}</td>
+  </tr>
+  <tr>
+     <td>Temperatura Cº: </td>
+     <td>{{geo.current.temp_c}}</td>
+  </tr>
+  <tr>
+     <td>Temperatura Fº: </td>
+     <td>{{geo.current.temp_f}}</td>
+  </tr>
+
+</table>
+</div>
+
+	
+	
+	
+	
+	<!-- AngularJS -->
+	<script type="text/javascript" src="resources/scripts/angular.min.js"></script>
+
+
+	<script type="text/javascript">
+		// Creacion del modulo principal de la aplicacion
+		/*
+		*	Servicio $scope => creacion del modelo (datos) para
+		*	utilizar en la vista asociada al controlador
+		*	
+		*	Servicio $log => para depuración por consola del
+		*	navegador. Equivalente a console.log
+		*
+		*	Servicio $http => para realizar peticiones asincronas
+		*	a recursos (URL's) internas o externas. Por debajo va
+		*	el objeto XMLHttpRequest
+		*
+		*	Se configura con un objeto donde indicamos el método
+		*	de envio (porpiedad method) y la URL (propiedad url)
+		*
+		*	Tiene un callback asociado al evento success que se
+		*	ejecuta cuando recibimos respuesta OK desde el
+		*	servidor.
+		*
+		*	Tiene un callback asociado al evento error que se
+		*	ejecuta cuando hay error en la respuesta desde el
+		*	servidor.
+		*/
+		var servicios = angular.module("appTiempo", []);
+		
+		// Creación del controlador principal
+		var controlador = servicios.controller("appController",
+				["$scope", "$log", "$http", 
+					function($scope, $log, $http) {
+					
+					$scope.datos = [];
+					
+					$scope.geo = {};
+					
+
+					
+					 $scope.sendURL = function (){
+					/*
+					*   mirar en consola
+					*	console.log("http://api.apixu.com/v1/current.json?key=2a7216e2f84b439185b110910170610&q="+$scope.localolization)
+					*
+					*	Petición GET con parametro para la localizacion
+					*/
+					$http({
+						method: 'GET',
+						url: 'http://api.apixu.com/v1/current.json?key=2a7216e2f84b439185b110910170610&q='+$scope.localolization
+					}).success(function(datos, status, headers, config) {
+						
+						
+						
+						$scope.geo = datos;
+						//VERIFICCAON
+						//console.log("funciona envio");
+						
+					}).error(function(datos, status, headers, config) {
+						//sacar por pantalla el error y estatus del servicio
+						alert("Error en carga de datos $http\n" + 
+								"Código de error HTTP: " + status);
+					});
+					// asegurarse
+					//$log.debug("Creado scope del controlador");
+					}
+					
+				}]);
+
+
+
+			
+			
+		
+
+	</script>
+	
+</body>
+</html>

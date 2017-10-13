@@ -27,7 +27,7 @@
 		
 		<!-- Sufijo indicando extensión de los ficheros físicos -->
 		<property name="suffix" value=".jsp" />
-		
+		<!-- implement hojas de estilo propias -->
 		 <!--  <mvc:resources mapping="/resources/**" location="/resources/" /> -->
 	</bean>
 	

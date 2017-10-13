@@ -6,7 +6,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#barraNavegacion">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
@@ -17,15 +17,16 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="<c:url value='/' />">Inicio</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="<c:url value='/index' />">Invitado<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="<c:url value='/' />">Invitado<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="<c:url value='/signUp' />">pagina 1</a></li>
-            <li><a href="<c:url value='/signUp' />">pagina 2</a></li>
-            <li><a href="<c:url value='/signUp' />">pagina 3</a></li>
+          <!-- queria implementar en este caso sistema de log out y camio de cuenta-->
+            <li><a href="#">log out</a></li>
+            <li><a href="#' />">Cambiar cuenta</a></li>
+
           </ul>
         </li>
-        <li><a href="<c:url value='/signUp' />">pagina 2</a></li>
-        <li><a href="<c:url value='/signUp' />">pagina 3</a></li>
+        <li><a href="#">pagina 2</a></li>
+        <li><a href="#">pagina 3</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<c:url value='/signUp' />"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

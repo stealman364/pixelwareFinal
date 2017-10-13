@@ -27,7 +27,7 @@ public class FrontController {
 
 		return modelAndView;
 	}
-	
+	//redireccion a pagina de signUp
 	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
 	public ModelAndView signUpBueno() {
 
@@ -36,11 +36,20 @@ public class FrontController {
 
 		return modelAndView;
 	}
-	
+	//redireccion a pagina de login
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
 
 		ModelAndView modelAndView = new ModelAndView("login");
+
+
+		return modelAndView;
+	}
+	//futura redireccion de log out
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView logout() {
+
+		ModelAndView modelAndView = new ModelAndView("index");
 
 
 		return modelAndView;
